@@ -58,14 +58,14 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private void btnCalcLoan(ActionEvent event) {
 
-		System.out.println("Amount: " + LoanAmount.getText());
+		double dInterestRate = Double.parseDouble(interestRate.getText());
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());
-		System.out.println("Amount: " + dLoanAmount);	
+		double dTerm = Double.parseDouble(term.getText());
+		double dAdditionalPayment = Double.parseDouble(additionalPayment.getText());	
 		
-		lblTotalPayemnts.setText("123");
 		
-		LocalDate localDate = PaymentStartDate.getValue();
-	 
-		System.out.println(localDate);
+		totalPayments.setText("123");
+		
+		totalInterest.setText("123");
 	}
 }
