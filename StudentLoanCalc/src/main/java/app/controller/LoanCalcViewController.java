@@ -25,6 +25,15 @@ public class LoanCalcViewController implements Initializable   {
 	private TextField totalInterest;
 	
 	@FXML
+	private TextField interestRate;
+	
+	@FXML
+	private TextField term;
+	
+	@FXML
+	private TextField additionalPayment;
+	
+	@FXML
 	private Label lblTotalPayemnts;
 	
 	@FXML
