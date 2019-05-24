@@ -23,7 +23,16 @@ public class TestPMT {
 		
 		
 	}
-
+	
+	@Test
+	public void total_payments_test() {
+		
+	}
+	
+	@Test
+	public void total_interest_test() {
+		
+	}
 }
 
  

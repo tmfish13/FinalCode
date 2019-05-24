@@ -62,8 +62,14 @@ public class LoanCalcViewController implements Initializable   {
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());
 		double dTerm = Double.parseDouble(term.getText());
 		double dAdditionalPayment = Double.parseDouble(additionalPayment.getText());	
+
 		
-		
+		if (dAdditionalPayment == 0) {
+			double well = dLoanAmount*(1+dInterestRate*dTerm);
+			double thePay = dTerm * 12;
+			totalInterest.setText(Double.toString(well));
+			totalPayments.setText(Double.toString(thePay));
+		}
 		totalPayments.setText("123");
 		
 		totalInterest.setText("123");
