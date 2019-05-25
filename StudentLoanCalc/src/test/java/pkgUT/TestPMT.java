@@ -26,14 +26,31 @@ public class TestPMT {
 	
 	@Test
 	public void total_payments_test1() {
+		double yearsOfLoan = 20;
+		double expectedPayments = 240;
+		double totalPayments = yearsOfLoan * 12;
 		
-	
+		assertEquals(expectedPayments, totalPayments, 0.01);
 		
 	}
 	
 	@Test
-	public void total_interest_test() {
+	public void total_payments_test2() {
+		double r = 0.07 / 12;
+		double n = 20 * 12;
+		double p = 150000;
+		double f = 0;
+		boolean t = false;
+		double additional = 100;
+		double PMT = Math.abs(FinanceLib.pmt(r, n, p, f, t));
+		double expectedPayments = 203;
+		double pay = 0;
 		
+		while(additional < p) {
+			pay++;
+		}
+		
+		assertEquals(expectedPayments, pay, 0.01);
 	}
 }
 
