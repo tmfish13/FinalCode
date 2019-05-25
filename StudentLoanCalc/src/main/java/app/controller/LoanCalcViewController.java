@@ -73,7 +73,7 @@ public class LoanCalcViewController implements Initializable   {
 			totalInterest.setText(Double.toString(well));
 			totalPayments.setText(Double.toString(thePay));
 		}else {
-			double interest = (Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false))-dAdditionalPayment)*dTerm*12;
+			double interest = (Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false))-dAdditionalPayment)*dTerm;
 			double pay = interest/(Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false)));
 			interest = interest - dLoanAmount;
 			totalPayments.setText(Double.toString(pay));
