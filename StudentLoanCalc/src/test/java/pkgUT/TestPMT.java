@@ -25,7 +25,9 @@ public class TestPMT {
 	}
 	
 	@Test
-	public void total_payments_test() {
+	public void total_payments_test1() {
+		
+	
 		
 	}
 	

@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import org.apache.poi.ss.formula.functions.FinanceLib;
+
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
@@ -58,15 +61,15 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private void btnCalcLoan(ActionEvent event) {
 
-		double dInterestRate = Double.parseDouble(interestRate.getText());
+		double dInterestRate = Double.parseDouble(interestRate.getText())/12;
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());
-		double dTerm = Double.parseDouble(term.getText());
+		double dTerm = Double.parseDouble(term.getText())*12;
 		double dAdditionalPayment = Double.parseDouble(additionalPayment.getText());	
 
 		
 		if (dAdditionalPayment == 0) {
-			double well = dLoanAmount*(1+dInterestRate*dTerm);
 			double thePay = dTerm * 12;
+			double well = Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false))*thePay;
 			totalInterest.setText(Double.toString(well));
 			totalPayments.setText(Double.toString(thePay));
 		}
