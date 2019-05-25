@@ -64,17 +64,18 @@ public class LoanCalcViewController implements Initializable   {
 		double dInterestRate = Double.parseDouble(interestRate.getText())/12;
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());
 		double dTerm = Double.parseDouble(term.getText())*12;
-		double dAdditionalPayment = Double.parseDouble(additionalPayment.getText());	
+		double dAdditionalPayment = Double.parseDouble(additionalPayment.getText());
+		double PMT = Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false));
 
 		
 		if (dAdditionalPayment == 0) {
 			double thePay = dTerm * 12;
-			double well = Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false))*thePay-dLoanAmount;
+			double well = PMT*thePay-dLoanAmount;
 			totalInterest.setText(Double.toString(well));
 			totalPayments.setText(Double.toString(thePay));
 		}else {
-			double interest = (Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false))-dAdditionalPayment)*dTerm;
-			double pay = interest/(Math.abs(FinanceLib.pmt(dInterestRate, dTerm, dLoanAmount, 0, false)));
+			double interest = (PMT-dAdditionalPayment)*dTerm;
+			double pay = interest/(PMT);
 			interest = interest - dLoanAmount;
 			totalPayments.setText(Double.toString(pay));
 			totalInterest.setText(Double.toString(interest));
