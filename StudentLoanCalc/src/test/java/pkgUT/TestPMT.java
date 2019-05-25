@@ -64,17 +64,13 @@ public class TestPMT {
 		PMT = Math.abs(FinanceLib.pmt(r, n, p, f, t));
 		double additional = 100;
 		double expectedPayments = 203;
-		double pay = 0;
-		
-		double regPay = PMT*n-p;
-		
-		while(regPay>0) {
-			regPay = regPay - (PMT+additional);
-			pay++;
-		}
 		
 		
-		assertEquals(expectedPayments, pay, 0.01);
+		double interest = (PMT-additional)*n;
+		double pay = interest/(PMT);
+		
+		
+		assertEquals(expectedPayments, pay, 1);
 	}
 	
 	/*
