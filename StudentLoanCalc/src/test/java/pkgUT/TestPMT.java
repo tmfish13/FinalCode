@@ -55,25 +55,22 @@ public class TestPMT {
 	
 	@Test
 	public void total_payments_test2() {
-		double PMT;
 		double r = 0.07 / 12;
 		double n = 20 * 12;
 		double p = 150000;
 		double f = 0;
 		boolean t = false;
-		PMT = Math.abs(FinanceLib.pmt(r, n, p, f, t));
+		double PMT = Math.abs(FinanceLib.pmt(r, n, p, f, t));
 		double additional = 100;
 		double expectedPayments = 203;
-		
-		
 		double interest = (PMT-additional)*n;
-		double pay = interest/(PMT);
 		
+		double pay = interest/(PMT);
+			
 		
 		assertEquals(expectedPayments, pay, 1);
 	}
 	
-	/*
 	
 	@Test
 	public void total_interest_test2() {
@@ -94,7 +91,6 @@ public class TestPMT {
 		assertEquals(expectedInterest, totalInterest, 0.01);
 		
 	}
-	*/
 }
 
  
